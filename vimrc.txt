@@ -1,0 +1,73 @@
+" .vimrc file
+" User : Jinmo Kwon
+" Last Update : 2016-01-09
+
+" 0. Compatible mode settings
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" 1. Basic settings
+set number                      " Display line number
+set title                       " Setup title
+set ruler                       " Show the cursur position
+set nobackup                    " Do not keep a backup file, use versions instead
+set history=200                 " Keep 50 lines of command line history
+set noerrorbells                " Disable Ringing the bell (beep or screen flash) for error messages
+set visualbell t_vb=            " Use visualbell instead of noisy beeping
+set tabstop=4                   " Width of tab char = 4
+set shiftwidth=4                " Width of shift ( << | >> ) = 4
+set showcmd                     " Show command in the last line of the screen
+set backspace=indent,eol,start
+set autowrite                   " Autowrite modified file when quitting or switching buffers
+set noswapfile                  " Make no *.swp or *.swo file 
+set ls=2                        " Always show status line
+set cursorline                  " Highlight the screen line of the cursor with CursorLine
+
+if has("syntax")
+    syntax on                   " Syntax enabled when syntax is detected
+endif
+
+" 2. Indentation settings
+set cindent                     " Setup for cindent
+set smartindent                 " Setup for smartindent
+set autoindent                  " Setup for autoindent
+set expandtab                   " Setup for expandtab - use appropriate number(tabstop) of spaces instead of <Tab> 
+
+" 3. Search-related settings
+set incsearch                   " Do incremental searching
+set wrapscan                    " Go back to 1st line when search hits the bottom of file
+set ignorecase                  " Ignore case in search pattern
+set showmatch                   " Jump to the matching bracket 
+set hlsearch
+" 4. Folding settings
+set fdm=marker                  " Setup Method - marker
+set fdl=0                       " Set for fold level 0 - infinite
+
+" 5. GUI settings
+"if &t_Co > 2 || has("gui_running")
+if has("gui_running")
+    set guifont=Monospace\ 13 " Set GUI font to Ubuntu Mono 13pt
+    colorscheme desert
+    set background=dark
+    behave xterm                 " Set behaviour for mouse and selection (mswin for enable  ctrl-c/ctrl-v copy-paste)
+    set visualbell t_vb=         " Use visualbell instead of noisy beeping
+else
+    colorscheme darkblue
+"    set background=dark
+    behave xterm             " Set behaviour for mouse and selection (xterm for disable ctrl-c/ctrl-v copy-paste)
+endif
+
+if has('mouse')
+    set mouse=a                 "Enable the use of the mouse 
+endif
+
+" 6. Hot-key settings
+map <F3> :Tlist<CR>
+map <F4> :TlistUpdate<CR>
+
+" 7. Etc. settings
+if &diff
+    " diff mode
+    set diffopt+=iwhite             " Ignore white space for vimdiff
+endif
