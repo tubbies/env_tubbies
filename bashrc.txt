@@ -1,0 +1,10 @@
+if [ -f /etc/bashrc ]; then
+    source /etc/bashrc
+fi
+
+export LC_ALL="en_US.utf8"
+export LANG="en_US.utf8"
+export LANGUAGE="en_US.utf8"
+export GDM_LANG="en_US.utf8"
+
+PS1="[\u@\h \w]\$ "
